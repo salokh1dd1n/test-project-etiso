@@ -13,4 +13,9 @@ class Car extends Model
         'name',
         'type'
     ];
+
+    protected $casts = [
+        'name' => 'string',
+        'type' => 'string'
+    ];
 }
