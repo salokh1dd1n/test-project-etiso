@@ -47,4 +47,16 @@ class CarController extends Controller
         $car->update($credentials);
         return new CarResource($car);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Car $car
+     * @return CarResource
+     */
+    public function destroy(Car $car): CarResource
+    {
+        $car->delete();
+        return new CarResource($car);
+    }
 }
