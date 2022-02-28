@@ -59,4 +59,25 @@ class CarController extends Controller
         $car->delete();
         return new CarResource($car);
     }
+
+    /**
+     * Get first car from table where type == 'big', name of the car should be in lowercase and uppercase
+     *
+     * @return CarResource
+     */
+    public function getWithFilter(): CarResource
+    {
+        $car = $this->getFirstBigCar();
+        return new CarResource($car);
+    }
+
+    /**
+     * Get first car from table where type == 'big'
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getFirstBigCar(): \Illuminate\Database\Eloquent\Model
+    {
+        return Car::query()->where('type', 'big')->first();
+    }
 }

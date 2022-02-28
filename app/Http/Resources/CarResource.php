@@ -14,10 +14,32 @@ class CarResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
+        $route = $request->route()->getName();
+
+        $crud = array_fill_keys([
+            'cars.index',
+            'cars.update',
+            'cars.store',
+            'cars.destroy',
+        ], [
             'id' => $this->id,
             'name' => $this->name,
             'type' => $this->type
+        ]);
+        $others = [
+            'cars.getWithUpperCase' => [
+                'id' => $this->id,
+                'name' => strtoupper($this->name),
+                'type' => $this->type
+            ],
+            'cars.getWithLowerCase' => [
+                'id' => $this->id,
+                'name' => strtolower($this->name),
+                'type' => $this->type
+            ],
         ];
+        $resources = array_merge($crud, $others);
+
+        return $resources[$route];
     }
 }
