@@ -32,4 +32,19 @@ class CarController extends Controller
         $car = Car::query()->create($credentials);
         return new CarResource($car);
     }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param CarRequest $request
+     * @param Car $car
+     * @return CarResource
+     */
+
+    public function update(CarRequest $request, Car $car): CarResource
+    {
+        $credentials = $request->validated();
+        $car->update($credentials);
+        return new CarResource($car);
+    }
 }
