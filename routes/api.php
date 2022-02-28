@@ -20,4 +20,5 @@ Route::get('/user', function (Request $request) {
 Route::apiResource('cars', \App\Http\Controllers\Api\CarController::class)->except('show');
 Route::get('/cars/task5', [\App\Http\Controllers\Api\CarController::class, 'getWithFilter'])->name('cars.getWithUpperCase');
 Route::get('/cars/task6', [\App\Http\Controllers\Api\CarController::class, 'getWithFilter'])->name('cars.getWithLowerCase');
+Route::get('/cars/task7', [\App\Http\Controllers\Api\CarController::class, 'deleteWithFilter'])->name('cars.deleteWithFilter');
 
