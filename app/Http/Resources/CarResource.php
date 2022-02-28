@@ -21,6 +21,7 @@ class CarResource extends JsonResource
             'cars.update',
             'cars.store',
             'cars.destroy',
+            'cars.deleteWithFilter'
         ], [
             'id' => $this->id,
             'name' => $this->name,

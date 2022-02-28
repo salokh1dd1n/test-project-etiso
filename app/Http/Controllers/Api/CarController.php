@@ -72,6 +72,18 @@ class CarController extends Controller
     }
 
     /**
+     * Delete first car from table where type == 'big'
+     *
+     * @return CarResource
+     */
+    public function deleteWithFilter(): CarResource
+    {
+        $car = $this->getFirstBigCar();
+        $car->delete();
+        return new CarResource($car);
+    }
+
+    /**
      * Get first car from table where type == 'big'
      *
      * @return \Illuminate\Database\Eloquent\Model
