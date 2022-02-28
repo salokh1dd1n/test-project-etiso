@@ -19,4 +19,17 @@ class CarController extends Controller
         $cars = Car::all();
         return CarResource::collection($cars);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param CarRequest $request
+     * @return CarResource
+     */
+    public function store(CarRequest $request): CarResource
+    {
+        $credentials = $request->validated();
+        $car = Car::query()->create($credentials);
+        return new CarResource($car);
+    }
 }
